@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Hello React</title>
+    <script src="/javascripts/build/react.js"></script>
+    <script src="/javascripts/build/react-dom.js"></script>
+    <script src="/javascripts/build/browser.min.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div id="example"></div>
+    <script type="text/babel">
+		var HelloWorld = React.createClass({
+		  render: function() {
+		    return (
+		      <p>
+		        Hello, <input type="text" placeholder="Your name here" />!
+		        It is {this.props.date.toTimeString()}
+		      </p>
+		    );
+		  }
+		});
+
+		setInterval(function() {
+		  ReactDOM.render(
+		    <HelloWorld date={new Date()} />,
+		    document.getElementById('example')
+		  );
+		}, 1000);
+    </script>
   </body>
 </html>
